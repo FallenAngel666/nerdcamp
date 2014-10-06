@@ -2,7 +2,7 @@ package com.flowfact.hausaufgabenmanager;
 
 public class AuthenticationService {
 
-	private UserRepository userRepository = new UserRepository();
+	private UserRepository userRepository;
 
 	public boolean authenticate(String username, String password) {
 		User user = userRepository.getUser(username);
@@ -12,5 +12,12 @@ public class AuthenticationService {
 
 		return false;
 	}
+	
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
+	public UserRepository getUserRepository() {
+		return userRepository;
+	}
 }
