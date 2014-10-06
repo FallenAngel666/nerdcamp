@@ -8,44 +8,41 @@ import java.util.List;
 public class HomeworkManager {
 
 	private List<Homework> tasks = new LinkedList<Homework>();
-	private final AuthenticationService service;
 	
-	public HomeworkManager(AuthenticationService service) {
-		this.service = service;
-	}
-	
-	public void createDummyTasks() {
-		tasks.add(new Homework("GE", "Seite 100, A42", new Date(),
+	public void createDummyTasks(AuthenticationService service) {
+		add(new Homework("GE","", "Seite 100, A42", new Date(),
 				service.getUserRepository().getUser("test1")));
-		tasks.add(new Homework("GE", "Seite 100, A43", new Date(),
+		add(new Homework("GE","", "Seite 100, A43", new Date(),
 				service.getUserRepository().getUser("test1"),
 				true));
-		tasks.add(new Homework("GE", "Seite 100, A44", new Date(),
+		add(new Homework("GE","", "Seite 100, A44", new Date(),
 				service.getUserRepository().getUser("test2")));
 
 	}
 
-	public void set(int index, String subject, String task, Date date, User user, boolean done) {
-		addHomework(new Homework(subject, task, date, user, done));
+	public void set(int index, String subject, String title, String task, Date date, User user, boolean done) {
+		set(index, new Homework(subject, title, task, date, user, done));
 	}
 	
-	public void set(int index, String subject, String task, Date date, User user) {
-		addHomework(new Homework(subject, task, date, user));
+	public void set(int index, String subject, String title, String task, Date date, User user) {
+		set(index, new Homework(subject, title, task, date, user));
 	}
 	
-	public void setHomework(int index, Homework task) {
-		tasks.add(task);
+	public void set(int index, Homework task) {
+		task.setIndex(index);
+		tasks.set(index,task);
 	}
 	
-	public void add(String subject, String task, Date date, User user, boolean done) {
-		addHomework(new Homework(subject, task, date, user, done));
+	public void add(String subject, String title, String task, Date date, User user, boolean done) {
+		add(new Homework(subject, title, task, date, user, done));
 	}
 	
-	public void add(String subject, String task, Date date, User user) {
-		addHomework(new Homework(subject, task, date, user));
+	public void add(String subject, String title, String task, Date date, User user) {
+		add(new Homework(subject, title, task, date, user));
 	}
 	
-	public void addHomework(Homework task) {
+	public void add(Homework task) {
+		task.setIndex(tasks.size());
 		tasks.add(task);
 	}
 	

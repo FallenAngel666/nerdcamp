@@ -15,9 +15,15 @@ public class UserRepository {
 	 * Method to create dummy data for testing
 	 */
 	public void createDummyObjects() {
-		userList.add(new User("test1", "testpass"));
-		userList.add(new User("test2", "testpass"));
-		userList.add(new User("test3", "testpass"));
+		User a = new User("test1","testpass");
+		User b = new User("test2","testpass");
+		User c = new User("test3","testpass");
+		a.setIndex(0);
+		b.setIndex(1);
+		c.setIndex(2);
+		userList.add(a);
+		userList.add(b);
+		userList.add(c);
 	}
 
 	public User getUser(String username) {

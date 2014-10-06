@@ -3,6 +3,7 @@ package com.flowfact.hausaufgabenmanager;
 public class User {
 	private String username;
 	private String password;
+	private int index = -1;
 
 	public User(String username, String password) {
 		super();
@@ -24,6 +25,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 }

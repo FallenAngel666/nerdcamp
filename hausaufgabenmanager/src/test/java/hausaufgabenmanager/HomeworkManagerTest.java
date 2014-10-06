@@ -13,8 +13,8 @@ public class HomeworkManagerTest {
 	public void shouldCreateThreeDummyEntries() {
 		AuthenticationService service = new AuthenticationService();
 		service.setUserRepository(new UserRepository());
-		HomeworkManager manager = new HomeworkManager(service);
-		manager.createDummyTasks();
+		HomeworkManager manager = new HomeworkManager();
+		manager.createDummyTasks(service);
 		Assert.assertEquals(3,manager.readAll().size());
 	}
 	
@@ -22,8 +22,8 @@ public class HomeworkManagerTest {
 	public void shouldGetAllDone() {
 		AuthenticationService service = new AuthenticationService();
 		service.setUserRepository(new UserRepository());
-		HomeworkManager manager = new HomeworkManager(service);
-		manager.createDummyTasks();
+		HomeworkManager manager = new HomeworkManager();
+		manager.createDummyTasks(service);
 		Assert.assertEquals(1,manager.read(true).size());
 	}
 	
@@ -31,8 +31,8 @@ public class HomeworkManagerTest {
 	public void shouldGetAllUndone() {
 		AuthenticationService service = new AuthenticationService();
 		service.setUserRepository(new UserRepository());
-		HomeworkManager manager = new HomeworkManager(service);
-		manager.createDummyTasks();
+		HomeworkManager manager = new HomeworkManager();
+		manager.createDummyTasks(service);
 		Assert.assertEquals(2,manager.read(false).size());
 	}
 	
@@ -40,8 +40,8 @@ public class HomeworkManagerTest {
 	public void shouldGetAllUser1() {
 		AuthenticationService service = new AuthenticationService();
 		service.setUserRepository(new UserRepository());
-		HomeworkManager manager = new HomeworkManager(service);
-		manager.createDummyTasks();
+		HomeworkManager manager = new HomeworkManager();
+		manager.createDummyTasks(service);
 		Assert.assertEquals(2,manager.read("test1").size());
 	}
 	
@@ -49,8 +49,8 @@ public class HomeworkManagerTest {
 	public void shouldGetAllUser1Done() {
 		AuthenticationService service = new AuthenticationService();
 		service.setUserRepository(new UserRepository());
-		HomeworkManager manager = new HomeworkManager(service);
-		manager.createDummyTasks();
+		HomeworkManager manager = new HomeworkManager();
+		manager.createDummyTasks(service);
 		Assert.assertEquals(1,manager.read("test1",true).size());
 	}
 }
