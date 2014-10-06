@@ -20,6 +20,17 @@ public class HomeworkManager {
 
 	}
 
+	public void remove(Homework task) {
+		remove(task.getIndex());
+	}
+	
+	public void remove(int index) {
+		tasks.remove(index);
+		for(int i = 0; i < tasks.size(); i++) {
+			tasks.get(i).setIndex(i);
+		}
+	}
+	
 	public void set(int index, String subject, String title, String task, Date date, User user, boolean done) {
 		set(index, new Homework(subject, title, task, date, user, done));
 	}
